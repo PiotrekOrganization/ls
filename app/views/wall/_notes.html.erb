@@ -1,0 +1,16 @@
+<% @notes.each do |note| %>
+	   <% lat = note.latitude %>
+              <% lon  = note.longitude  %>
+              <% s = Geocoder.search([lat , lon]) %>
+	<div class="well well-large">
+		<blockquote>
+		  <p><%= note.content %> </p>
+		  <small><%= time_ago_in_words(note.created_at) %> ago  <cite title="Source Title"><%= s[0].address%></cite></small>
+		</blockquote>
+              
+              
+           
+              
+
+    </div>
+<% end %>

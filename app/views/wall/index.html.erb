@@ -2,6 +2,10 @@
 <h3>User location:</h3>
 <%= current_user.latitude %>
 <%= current_user.longitude %>
+
+<%= link_to 'new', new_note_path , :class => "label label-warning"%>
+<%= render :partial => "notes" %>
+
 <% else %>
 <h3>Guest location:</h3>
 <%= @current_guest.latitude %>

@@ -9,11 +9,17 @@
 <body>
 
   <%= render :partial => '/layouts/header' %>
-
+<div class="row-fluid">
+  <div class="span2">...</div>
+  <div class="span8">...
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-
 <%= yield %>
+
+</div>
+  <div class="span2">...</div>
+
+</div>
 
 <script>
 	function getLocation()

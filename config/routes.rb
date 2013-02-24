@@ -3,6 +3,7 @@ LocalS::Application.routes.draw do
   devise_for :users
   
   root :to => "wall#index"
+  resources :notes
 
   match "api/save_location" => "users#save_location", :as => "api_save_location"
 

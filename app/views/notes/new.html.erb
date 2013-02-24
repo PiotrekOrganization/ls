@@ -1,0 +1,4 @@
+<%= form_for @note do |f| %>
+	<%= f.text_area :content , :placeholder => "Write note.." %>
+	<%= f.submit 'add', :class => 'btn btn-success'  %>
+<% end %>
