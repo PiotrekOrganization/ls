@@ -10,6 +10,11 @@
                     <span class="icon-bar"></span>
                   </a>
                   <a class="brand" href="#">LocalSpotted</a>
+                  <ul class="nav pull-left">
+                     <% if user_signed_in? %>
+                   <li><a href="<%= url_for(messages_inbox_path ) %>"><i class="icon-envelope"></i></a></li> 
+                     <% end %>
+                 </ul>
                   <div class="nav-collapse collapse navbar-inverse-collapse">
                   
                    

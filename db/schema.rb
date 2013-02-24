@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224193639) do
+ActiveRecord::Schema.define(:version => 20130224210115) do
 
   create_table "categories", :force => true do |t|
     t.float    "lat"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(:version => 20130224193639) do
     t.string   "ip_address"
     t.float    "latitude"
     t.float    "longitude"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "notes", :force => true do |t|

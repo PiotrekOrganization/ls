@@ -7,6 +7,14 @@ LocalS::Application.routes.draw do
 
   match "api/save_location" => "users#save_location", :as => "api_save_location"
 
+  namespace :messages do  
+    match 'post_reply/:id' => "messages#post_reply", :as => 'post_reply'
+    match 'inbox' => 'messages#recived_messages'
+    match 'outbox' => 'messages#sent_messages'
+    resources :messages
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

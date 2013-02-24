@@ -5,12 +5,13 @@
 	<div class="well well-large">
 		<blockquote>
 		  <p><%= note.content %> </p>
-		  <small><%= time_ago_in_words(note.created_at) %> ago  <cite title="Source Title"><%= s[0].address%></cite></small>
-		</blockquote>
-              
-              
-           
-              
+		  <small><%= time_ago_in_words(note.created_at) %> ago  <cite title="Source Title"><%= s[0].address%></cite></small> 
+		</blockquote>  
 
+	
+		                         
+                  	<a style="text-decoration:none" href="<%= url_for(messages_post_reply_path(note)) %>"><i class="icon-pencil nav pull-right"> reply</i></a>                        
+		                   
+       
     </div>
 <% end %>
