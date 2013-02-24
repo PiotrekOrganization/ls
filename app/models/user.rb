@@ -8,5 +8,6 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :notes
+  geocoded_by :current_sign_in_ip
   # attr_accessible :title, :body
 end

@@ -10,19 +10,22 @@ class ApplicationController < ActionController::Base
 
   def current_guest
 
-  	if user_signed_in? 
-  		return 
-  	end
+  	if user_signed_in? and (current_user.updated_at < Time.now - 1.hour)
+      #current_user.geocode
+      #current_user.save
+  	else
 
-  	begin
-  		@current_guest = Guest.find(session[:current_guest])
- 	rescue
- 		@current_guest = Guest.new
-  		@current_guest.ip_address = request.remote_ip
-  		@current_guest.geocode
-  		@current_guest.save
-  		session[:current_guest] = @current_guest.id
- 	end
+    	begin
+    		@current_guest = Guest.find(session[:current_guest])
+   	  rescue
+   		 @current_guest = Guest.new
+    		@current_guest.ip_address = request.remote_ip
+    		@current_guest.geocode
+    		@current_guest.save
+    		session[:current_guest] = @current_guest.id
+    	end
+
+    end
 
   end
 
