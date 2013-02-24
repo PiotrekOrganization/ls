@@ -20,5 +20,4 @@ class User < ActiveRecord::Base
     s[0].formatted_address
   end
 
-
 end
