@@ -6,8 +6,10 @@ class NotesController < ApplicationController
 	def create 
 		@note = Note.new(params[:note])
 		@note.user = current_user
-		@note.latitude = current_user.latitude
-		@note.longitude = current_user.longitude
+		if @note.latitude.nil? or @note.longitude.nil?
+			@note.latitude = current_user.latitude
+			@note.longitude = current_user.longitude
+		end
 		@note.save!
 		redirect_to root_path , :alert => "note created"
 	rescue ActiveRecord::RecordInvalid

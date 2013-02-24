@@ -1,6 +1,19 @@
 <div id="new-post-form">
-	<%= form_for Note.new do |f| %>
-		<textarea class="note-content" id="note_content" name="note[content]" placeholder="Write note.."></textarea>
-		<%= f.submit 'Post', :class => 'btn btn-primary'  %>
+	<%= form_for @new_note do |f| %>
+		<div class="note-content-container">
+			<textarea class="note-content" id="note_content" name="note[content]" placeholder="Write a note.."></textarea>
+		</div>
+		<div class="note-details-container">
+				<%= f.hidden_field :latitude %>
+				<%= f.hidden_field :longitude %>
+			<div class="note-submit">
+				<%= f.submit 'Post', :class => 'btn btn-primary btn-small'  %>
+			</div>
+			<div class="note-user-location">
+				<span span="note-user-location-label">Your location: </span><span class="user-current-location"><%= current_user.location_name %></span>
+				<a href="#" data-lng="<%= current_user.longitude %>" data-lat="<%= current_user.latitude %>" class="note-change-location">Change my location</a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
 	<% end %>
 </div>
