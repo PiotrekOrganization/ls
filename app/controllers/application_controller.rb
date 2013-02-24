@@ -9,12 +9,21 @@ class ApplicationController < ActionController::Base
   #end
 
   def current_guest
-  	if session[:current_guest_id].nil?
-  		@current_guest = Guest.create
-  		session[:current_guest_id] = @current_guest.id
-  	else
-  		@current_guest = Guest.find(session[:current_guest_id])
+
+  	if user_signed_in? 
+  		return 
   	end
+
+  	begin
+  		@current_guest = Guest.find(session[:current_guest])
+ 	rescue
+ 		@current_guest = Guest.new
+  		@current_guest.ip_address = request.remote_ip
+  		@current_guest.geocode
+  		@current_guest.save
+  		session[:current_guest] = @current_guest.id
+ 	end
+
   end
 
 end

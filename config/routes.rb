@@ -1,7 +1,10 @@
 LocalS::Application.routes.draw do
-  devise_for :users
 
+  devise_for :users
+  
   root :to => "wall#index"
+
+  match "api/save_location" => "users#save_location", :as => "api_save_location"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

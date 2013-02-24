@@ -11,8 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130224145441) do
+ActiveRecord::Schema.define(:version => 20130224150206) do
+
+  create_table "guests", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "ip_address"
+    t.float    "latitude"
+    t.float    "longitude"
+  end
 
   create_table "notes", :force => true do |t|
     t.string   "content"
@@ -38,13 +45,5 @@ ActiveRecord::Schema.define(:version => 20130224145441) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
-=======
-ActiveRecord::Schema.define(:version => 20130224145103) do
-
-  create_table "guests", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
->>>>>>> Guests
 
 end

@@ -12,5 +12,27 @@
 
 <%= yield %>
 
+<script>
+	function getLocation()
+  	{
+  		console.log('f:getLocation')
+  		if (navigator.geolocation)
+    	{
+    		navigator.geolocation.getCurrentPosition(savePosition)
+    	}
+  	}
+	function savePosition(position)
+  	{
+  		$.ajax({
+  			url: "<%= url_for api_save_location_path %>",
+  			data: {lat: position.coords.latitude, long: position.coords.longitude }
+		}).done(function ( data ) {
+  			console.log( data )
+		})
+  	}
+  	$(document).ready( function() {
+  		getLocation()
+  	})
+</script>
 </body>
 </html>
