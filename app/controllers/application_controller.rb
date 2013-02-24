@@ -3,10 +3,15 @@ class ApplicationController < ActionController::Base
 
   #before_filter :get_location
   before_filter :current_guest
+  before_filter :categories_initialization
 
   #def get_location
   #	@current_location = request.location
   #end
+
+  def categories_initialization
+    @categories = Category.all
+  end
 
   def current_guest
 

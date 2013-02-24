@@ -10,15 +10,18 @@
 
   <%= render :partial => '/layouts/header' %>
 <div class="row-fluid">
-  <div class="span2">...</div>
-  <div class="span8">...
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-<%= yield %>
-
+  <div class="span3">
+    <%= render :partial => '/wall/categories' %>
+  </div>
+  <div class="span7" id="wall-container">
+    <div id="wall">
+      <% unless notice.nil? %><p class="notice"><%= notice %></p><% end %>
+      <% unless notice.nil? %><p class="alert"><%= alert %></p><% end %>
+      <%= yield %>
+    </div>
 </div>
-  <div class="span2">...</div>
-
+  <div class="span2">&nbsp;</div>
+  <div class="clearfix"></div>
 </div>
 
 <script>

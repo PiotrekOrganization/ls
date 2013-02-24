@@ -1,0 +1,6 @@
+<div id="new-post-form">
+	<%= form_for Note.new do |f| %>
+		<textarea class="note-content" id="note_content" name="note[content]" placeholder="Write note.."></textarea>
+		<%= f.submit 'Post', :class => 'btn btn-primary'  %>
+	<% end %>
+</div>
