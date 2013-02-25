@@ -153,7 +153,7 @@ body {
 	display: none;
 }
 
-.well.user-self-note blockquote,
+blockquote.own-note,
 blockquote.own-comment  {
 	border-color: #f89406;
 }
@@ -235,7 +235,7 @@ blockquote.own-comment  {
 	font-size:12px;
 }
 
-blockquote .avatar-image {
+#wall .avatar-image {
 	float: left;
 	margin-right: 10px;
 }
