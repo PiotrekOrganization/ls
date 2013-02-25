@@ -5,13 +5,15 @@
 		<div class="well well-large <% if note.user == current_user %>user-self-note<% end %>">
 			
 			<blockquote>
-			  <p><%= note.content %> </p>
-			  <small><%= time_ago_in_words(note.created_at) %> ago  <cite title="Source Title"><%= note.address %></cite></small> 
+				<%= image_tag note.user.avatar.url(:thumb), {:class => 'avatar-image'} %>
+				<p><%= note.content %> </p>
+				<small><%= time_ago_in_words(note.created_at) %> ago  <cite title="Source Title"><%= note.address %></cite></small> 
 			</blockquote> 
 
 			<div class="comments" id="note-<%= note.id %>-comments" style="display:none">
 				<% for comment in note.comments %>
 				<blockquote <% if comment.user = current_user %>class="own-comment"<% end %>>
+					<%= image_tag comment.user.avatar.url(:thumb), {:class => 'avatar-image'} %>
 					<%= comment.content %>
 					<small><%= time_ago_in_words(comment.created_at) %> ago</small> 
 				</blockquote>

@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
   has_many :sent_messages , :class_name => "Message" , :foreign_key => "sender_id"
   has_many :recived_messages , :class_name => "Message" , :foreign_key => "receiver_id"
 
-  
+  attr_accessible :avatar
+  has_attached_file :avatar, :styles => { :big => "600x400", :medium => "100x100>", :thumb => "42x42>" }, :default_url => "/assets/images/avatars/:style/default.jpg"
+
   def location_name
     begin
       s = Geocoder.search("#{self[:latitude]}, #{self[:longitude]}")

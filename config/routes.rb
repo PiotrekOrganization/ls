@@ -16,6 +16,11 @@ LocalS::Application.routes.draw do
 
   resources :comments
 
+  namespace :users do
+    match "update_profile" => "users#update"
+    match "profile" => "users#my_profile"
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
