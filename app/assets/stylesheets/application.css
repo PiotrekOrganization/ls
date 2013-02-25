@@ -164,3 +164,7 @@ body {
  .title-message {
  	width:100px;
  }
+ .btn-test {
+ 	width:10px;
+ 	height: 10px;
+ }

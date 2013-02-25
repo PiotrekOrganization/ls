@@ -5,10 +5,20 @@
       
       <a class="brand" href="<%= url_for root_path %>">LocalSpotted</a>
       <ul class="nav pull-left">
-         <% if user_signed_in? %>
-       <li><a href="<%= url_for(messages_inbox_path ) %>"><i class="icon-envelope"></i></a></li> 
-         <% end %>
-     </ul>
+        
+      
+
+
+  <% if user_signed_in? %>
+        <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-envelope"></i><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a href="<%= url_for(messages_inbox_path ) %>">Inbox</a></li>
+                          <li><a href="<%= url_for(messages_outbox_path ) %>">Outbox</a></li>                          
+                        </ul>
+                          <% end %>
+                        </ul>
+  
     
        
         <ul class="nav pull-right">
