@@ -12,7 +12,7 @@
 
 			<div class="comments" id="note-<%= note.id %>-comments" style="display:none">
 				<% for comment in note.comments %>
-				<blockquote <% if comment.user = current_user %>class="own-comment"<% end %>>
+				<blockquote <% if comment.user == current_user %>class="own-comment"<% end %>>
 					<%= image_tag comment.user.avatar.url(:thumb), {:class => 'avatar-image'} %>
 					<%= comment.content %>
 					<small><%= time_ago_in_words(comment.created_at) %> ago</small> 
