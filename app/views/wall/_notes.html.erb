@@ -1,4 +1,5 @@
 <% @notes.each do |note| %>
+<<<<<<< HEAD
 	   <% lat = note.latitude %>
               <% lon  = note.longitude  %>
               <% s = Geocoder.search([lat , lon]) %>
@@ -13,5 +14,36 @@
 		  <a class="btn btn-small btn-warning" href="<%= url_for(messages_post_reply_path(note)) %>"><i class="icon-comment"></i> &nbsp;comment</a>
 		</div>
 		<div class="clearfix"></div>  
+=======
+	<div class="well well-large <% if note.user == current_user %>user-self-note<% end %>">
+		
+		<blockquote>
+		  <p><%= note.content %> </p>
+		  <small><%= time_ago_in_words(note.created_at) %> ago  <cite title="Source Title"><%= note.address %></cite></small> 
+		</blockquote>  
+
+		<div class="btn-group pull-right">
+
+			<% if note.user != current_user %>
+			<a class="btn btn-small" href="<%= url_for(messages_post_reply_path(note)) %>">
+				<i class="icon-envelope"></i> 
+				&nbsp;priv
+			</a>
+			<% end %>
+
+		  	<a class="btn btn-small note-modal-show-location" data-lng="<%= note.longitude %>" data-lat="<%= note.latitude %>" href="#">
+		  		<i class="icon-eye-open"></i> &nbsp;map
+		  	</a>
+		  	
+			<% if note.user != current_user %>
+		  	<a class="btn btn-small btn-warning" href="<%= url_for(messages_post_reply_path(note)) %>">
+		  		<i class="icon-comment"></i> &nbsp;comment
+		  	</a>
+		  	<% end %>
+
+		</div>
+		<div class="clearfix"></div>
+
+>>>>>>> 8bfff9409735ffd709785185160d51abf37b634d
     </div>
 <% end %>
