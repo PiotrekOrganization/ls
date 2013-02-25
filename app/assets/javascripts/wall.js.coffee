@@ -18,6 +18,15 @@ class Gui
 			lng = $(event.currentTarget).attr('data-lng')
 			lat = $(event.currentTarget).attr('data-lat')
 			@openModalWithStaticMap( lat, lng )
+		$('a.note-add-comment').each ->
+			note_id = $(this).attr('data-id')
+			$(this).click (event) ->
+			 	comment_box = $('#note-'+note_id+'-comment-box')
+			 	comment_box.fadeToggle 600, ->
+			 		$(window).one 'click', ->
+			 			comment_box.fadeOut()
+			 		comment_box.click (event) ->
+			 			event.stopPropagation()
 
 	newPostTriggers: ->
 		$('a.note-change-location').click (event) =>

@@ -16,8 +16,12 @@ class User < ActiveRecord::Base
 
   
   def location_name
-    s = Geocoder.search("#{self[:latitude]}, #{self[:longitude]}")
-    s[0].formatted_address
+    begin
+      s = Geocoder.search("#{self[:latitude]}, #{self[:longitude]}")
+      s[0].formatted_address
+    rescue
+      'Location not available'
+    end
   end
 
 end
