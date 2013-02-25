@@ -1,0 +1,6 @@
+<%= form_for [:messages , @post_reply ] do |f| %>
+	<%= f.hidden_field :receiver_id %>
+	<%= f.text_field :title , :placeholder => "Write a title" %>
+	<%= f.text_area :content , :placeholder => "Write a note.." %>
+	<%= f.submit 'add', :class => 'btn btn-success'  %>
+<% end %>

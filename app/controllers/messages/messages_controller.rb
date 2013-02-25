@@ -9,6 +9,14 @@ class Messages::MessagesController < ApplicationController
 	end
 
 	def post_reply
-		
+		@post_reply = Message.new			
+		@post_reply.receiver = Note.find(params[:id]).user	
+	end
+	def create
+		@message = Message.new(params[:message])
+		@message.sender = current_user		
+		@message.save!
+		redirect_to messages_inbox_path
+
 	end
 end
