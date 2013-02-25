@@ -9,22 +9,32 @@
 			  <small><%= time_ago_in_words(note.created_at) %> ago  <cite title="Source Title"><%= note.address %></cite></small> 
 			</blockquote>  
 
+			<% unless note.comments.empty? %>
+			<a href="#" class="btn pull-left btn-small">
+				<% if note.comments.size > 1 %>
+					<%= note.comments.size %> Comments&nbsp; <i class="icon-comment"></i>
+				<% else %>
+					<%= note.comments.size %> Comment&nbsp; <i class="icon-comment"></i>
+				<% end %>
+			</a>
+			<% end %>
+
 			<div class="btn-group pull-right">
 
 				<% if note.user != current_user %>
 				<a class="btn btn-small" href="<%= url_for(messages_post_reply_path(note)) %>">
 					<i class="icon-envelope"></i> 
-					&nbsp;priv
+					&nbsp;Priv
 				</a>
 				<% end %>
 
 			  	<a class="btn btn-small note-modal-show-location" data-lng="<%= note.longitude %>" data-lat="<%= note.latitude %>" href="#">
-			  		<i class="icon-eye-open"></i> &nbsp;map
+			  		<i class="icon-eye-open"></i> &nbsp;Map
 			  	</a>
 			  	
 				<% if note.user != current_user %>
 			  	<a class="btn btn-small btn-warning note-add-comment" data-id="<%= note.id %>" href="#">
-			  		<i class="icon-comment"></i> &nbsp;comment
+			  		<i class="icon-share-alt"></i> &nbsp;Comment
 			  	</a>
 			  	<% end %>
 
@@ -33,17 +43,16 @@
 
 	    </div>
 
-
-
 		<div class="comment-box" id="note-<%= note.id %>-comment-box">
 			<% if user_signed_in? %>
-			<form>
+			<%= form_for Comment.new do |f| %>
+				<input type="hidden" name="comment[note_id]" value="<%= note.id %>" />
 				<div class="textarea-container">
-					<textarea class="comment-content"></textarea>
+					<textarea class="comment-content" name="comment[content]"></textarea>
 				</div>
-				<input type="submit" value="post" class="btn btn-small btn-primary pull-right" />
+				<%= f.submit "Post", { :class => 'btn btn-small btn-primary pull-right' } %>
 				<div class="clearfix"></div>
-			</form>
+			<% end %>
 			<% else %>
 				<p style="padding: 5px 15px; margin:0; font-size:12px;">You have to sign in before posting comments.</p>
 			<% end %>
