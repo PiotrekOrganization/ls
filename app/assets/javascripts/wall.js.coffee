@@ -72,6 +72,7 @@ class Gui
 		locationMapStyled = new google.maps.StyledMapType(@mapStyles, {name: "Map"});
 		map.mapTypes.set('location_map', locationMapStyled)
 		map.setMapTypeId('location_map')
+		marker = new google.maps.Marker({ position: centerPoint, map: map })
 
 	mapInitialize: ->
 		mapOptions = { zoom: 12, center: @currentPosition, mapTypeId: google.maps.MapTypeId.ROADMAP}

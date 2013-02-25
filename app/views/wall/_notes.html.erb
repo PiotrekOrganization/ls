@@ -11,8 +11,9 @@
 
 			<div class="comments" id="note-<%= note.id %>-comments" style="display:none">
 				<% for comment in note.comments %>
-				<blockquote>
+				<blockquote <% if comment.user = current_user %>class="own-comment"<% end %>>
 					<%= comment.content %>
+					<small><%= time_ago_in_words(comment.created_at) %> ago</small> 
 				</blockquote>
 				<% end %>
 			</div> 
