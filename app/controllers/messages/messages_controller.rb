@@ -1,11 +1,11 @@
 class Messages::MessagesController < ApplicationController
-	
+	before_filter :authenticate_user!
 	def sent_messages
 		@sent_messages = current_user.sent_messages		
 	end
 
 	def recived_messages
-		@recived_messages = current_user.recived_messages
+		@recived_messages = current_user.recived_messages.reverse
 	end
 
 	def post_reply
