@@ -27,6 +27,22 @@ class Gui
 			 			comment_box.fadeOut()
 			 		comment_box.click (event) ->
 			 			event.stopPropagation()
+		$('a.note-show-comments').each ->
+			button = $(this)
+			note_id = $(this).attr('data-id')
+			state = 0
+			title = $(this).html()
+			button.click (event) ->
+				event.preventDefault()
+				if state == 0
+					state = 1
+					button.html( 'Hide comments' )
+					comments = $('#note-'+note_id+'-comments').slideDown()
+				else
+					state = 0
+					button.html( title )
+					comments = $('#note-'+note_id+'-comments').slideUp()
+
 
 	newPostTriggers: ->
 		$('a.note-change-location').click (event) =>
