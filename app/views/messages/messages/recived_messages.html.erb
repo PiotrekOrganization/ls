@@ -6,7 +6,7 @@
                   <th class="time-message">Time</th>
                   <th class="title-message">Title</th>
                   <th>Content</th>
-                  
+                  <th>Content</th>
                 </tr>
               </thead>
               <tbody>
@@ -15,6 +15,7 @@
                 <td><small style="font-size:10px;"><%= time_ago_in_words(mm.created_at) %> ago  </small>    </td>   
                   <td><%= mm.title %></td>
                   <td><%= mm.content %></td>
+                  <td><%= link_to 'delete', messages_message_path(mm), :class => :btn, :data=>{:method=>:delete, :confirm=>"Are you sure?"} %></td>
                 </tr>
              <% end %>
               </tbody>

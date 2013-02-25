@@ -19,4 +19,11 @@ class Messages::MessagesController < ApplicationController
 		redirect_to messages_inbox_path
 
 	end
+
+	def destroy
+		@message = Message.find(params[:id]).destroy
+		redirect_to messages_inbox_path , :alert => "message deleted"
+	rescue ActiveRecord::RecordNotFound
+		redirect_to messages_inbox_path , :alert => "message not Found"
+	end
 end

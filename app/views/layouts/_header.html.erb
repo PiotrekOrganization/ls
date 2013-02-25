@@ -4,9 +4,7 @@
     <div class="container">
       
       <a class="brand" href="<%= url_for root_path %>">LocalSpotted</a>
-      <ul class="nav pull-left">
-        
-      
+      <ul class="nav pull-left"> 
 
 
   <% if user_signed_in? %>
@@ -17,9 +15,7 @@
                           <li><a href="<%= url_for(messages_outbox_path ) %>">Outbox</a></li>                          
                         </ul>
                           <% end %>
-                        </ul>
-  
-    
+                        </ul>    
        
         <ul class="nav pull-right">
           
