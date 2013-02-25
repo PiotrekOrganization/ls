@@ -8,22 +8,45 @@ class Gui
 		@currentModal
 		@geocoder = new google.maps.Geocoder()
 		@newPostTriggers()
+		@wallTriggers()
 		@modalWindowSpace = $('#modal-window-space')
 		@mapStyles = [{stylers:[{invert_lightness:true}]},{featureType:"road.arterial",stylers:[{hue:"#f89406"},{lightness:30},{invert_lightness:false},{saturation:53}]},{featureType:"road.highway",stylers:[{hue:"#f89406"},{invert_lightness:false},{lightness:17},{saturation:53}]},{featureType:"water",stylers:[{hue:"#00fff7"},{lightness:41},{saturation:-52},{gamma:1.62}]},{featureType:"landscape",stylers:[{hue:"#3300ff"},{lightness:2}]},{featureType:"transit",stylers:[{lightness:75}]},{featureType:"poi",stylers:[{visibility:"off"}]}]
 
+	wallTriggers: ->
+		$('a.note-modal-show-location').click (event) =>
+			event.preventDefault
+			lng = $(event.currentTarget).attr('data-lng')
+			lat = $(event.currentTarget).attr('data-lat')
+			@openModalWithStaticMap( lat, lng )
+
 	newPostTriggers: ->
 		$('a.note-change-location').click (event) =>
+			event.preventDefault
 			button = event.currentTarget
 			@currentPosition = new google.maps.LatLng( parseFloat($(button).attr('data-lat')), parseFloat($(button).attr('data-lng')) )
-			@openModalWindow( HandlebarsTemplates['change_location'] )
+			@openModalWithSelectMap( HandlebarsTemplates['change_location'] )
 			
-	openModalWindow: (content) ->
+	openModalWithSelectMap: (content) ->
 		box = $('<div></div>')
 		box.append(content)
 		@modalWindowSpace.append(box)
 		box.modalWindow()
 		@currentModal = box
 		@mapInitialize()
+
+	openModalWithStaticMap: (lat, lng) ->
+		box = $('<div></div>')
+		box.append('<div id="map_canvas" style="height: 400px;"></div>')
+		@modalWindowSpace.append(box)
+		box.modalWindow()
+		@currentModal = box
+		centerPoint = new google.maps.LatLng( lat, lng )	
+		mapOptions = { zoom: 12, center: centerPoint, mapTypeId: google.maps.MapTypeId.ROADMAP}
+		map = new google.maps.StyledMapType(@map_styles, {name: "Mapa"})
+		map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+		locationMapStyled = new google.maps.StyledMapType(@mapStyles, {name: "Map"});
+		map.mapTypes.set('location_map', locationMapStyled)
+		map.setMapTypeId('location_map')
 
 	mapInitialize: ->
 		mapOptions = { zoom: 12, center: @currentPosition, mapTypeId: google.maps.MapTypeId.ROADMAP}
