@@ -14,6 +14,7 @@ LocalS::Application.routes.draw do
     resources :messages
   end
 
+  resources :comments
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

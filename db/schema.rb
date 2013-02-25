@@ -11,13 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225001541) do
+ActiveRecord::Schema.define(:version => 20130225015342) do
 
   create_table "categories", :force => true do |t|
     t.float    "lat"
     t.float    "lng"
     t.float    "round"
     t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "note_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
