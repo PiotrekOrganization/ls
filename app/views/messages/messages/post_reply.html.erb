@@ -1,11 +1,11 @@
 
   
 
-  	<%= form_for [:messages , @post_reply ] do |f| %>
+  	<%= form_for [:messages , @message ] do |f| %>
 	<%= f.hidden_field :receiver_id %>
 	<div class="note-content-container">
 		<input id="message_title" name="message[title]" placeholder="Write a title" type="text" style="width:98.5%">
-		<textarea  id="message_content" name="message[content]" placeholder="Write a note.." style="width:98.5%;height:250px;"></textarea>
+		<textarea  id="message_content" name="message[content]" placeholder="Write a note.." style="width:98.5%;height:250px;"><%= @message.content %></textarea>
 	</div>
 
 		<div class="note-details-container">
