@@ -1,17 +1,22 @@
 <div id="new-post-form">
-	<%= form_for @new_note do |f| %>
+	<%= form_for @new_note, :url => @form_url do |f| %>
 		<div class="note-content-container">
 			<textarea class="note-content" id="note_content" name="note[content]" placeholder="Write a note.."></textarea>
 		</div>
 		<div class="note-details-container">
-				<%= f.hidden_field :latitude %>
-				<%= f.hidden_field :longitude %>
+			<%= f.hidden_field :latitude %>
+			<%= f.hidden_field :longitude %>
+			<%= f.hidden_field :place_id %>
 			<div class="note-submit">
 				<%= f.submit 'Post', :class => 'btn btn-primary btn-small'  %>
 			</div>
 			<div class="note-user-location">
-				<span span="note-user-location-label">Your location: </span><span class="user-current-location"><%= current_user.location_name %></span>
-				<a href="#" data-lng="<%= current_user.longitude %>" data-lat="<%= current_user.latitude %>" class="note-change-location">Change my location</a>
+				<% if @new_note.place.nil? %>
+					<span span="note-user-location-label">Your location: </span><span class="user-current-location"><%= current_user.location_name %></span>
+					<a href="#" data-lng="<%= current_user.longitude %>" data-lat="<%= current_user.latitude %>" class="note-change-location">Change my location</a>
+				<% else %>
+					<span span="note-user-location-label">Your location: </span><span class="user-current-location"><%= @new_note.place.name %></span>
+				<% end %>
 			</div>
 			<div class="clearfix"></div>
 		</div>

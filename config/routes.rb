@@ -3,6 +3,8 @@ LocalS::Application.routes.draw do
   devise_for :users
   
   root :to => "wall#index"
+  match ":slug/wall" => "wall#place", :as => 'place_wall'
+  match "place/:id/new_note" => "places#new_note", :as => 'new_place_note'
   resources :notes
   resources :places
   resources :subscriptions
