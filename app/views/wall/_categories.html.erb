@@ -1,6 +1,9 @@
 <ul id="categories-menu">
 		<li class="active"><a href="#">Nearby</a></li>
-	<% for category in @categories %>
+	<% for category in current_user.subscriptions %>
 		<li><%= link_to category.name, root_path %></li>
+	<% end %>
+	<% if !current_page?( new_subscription_path ) %>
+		<li class="new-category"><a href="<%= url_for new_subscription_path %>"><i class="icon-plus"></i> Add category</a></li>
 	<% end %>
 </ul>
