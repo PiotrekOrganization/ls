@@ -1,6 +1,20 @@
-<%= form_for [:messages , @post_reply ] do |f| %>
+
+  
+
+  	<%= form_for [:messages , @post_reply ] do |f| %>
 	<%= f.hidden_field :receiver_id %>
-	<%= f.text_field :title , :placeholder => "Write a title" %>
-	<%= f.text_area :content , :placeholder => "Write a note.." %>
-	<%= f.submit 'add', :class => 'btn btn-success'  %>
-<% end %>
+	<div class="note-content-container">
+		<input id="message_title" name="message[title]" placeholder="Write a title" type="text" style="width:98.5%">
+		<textarea  id="message_content" name="message[content]" placeholder="Write a note.." style="width:98.5%;height:250px;"></textarea>
+	</div>
+
+		<div class="note-details-container">
+			<div class="note-submit">
+			<input class="btn btn-success nav pull-right" name="commit" type="submit" value="Send">
+			</div>
+		</div>
+	<% end %>
+	<div class="clearfix"></div>
+  
+
+
