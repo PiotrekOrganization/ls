@@ -18,7 +18,7 @@ class Messages::MessagesController < ApplicationController
 		if @message.save 
 			redirect_to messages_inbox_path
 		else
-			render :post_reply
+			render :post_reply 
 		end
 
 	end

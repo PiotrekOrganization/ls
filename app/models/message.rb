@@ -2,6 +2,6 @@ class Message < ActiveRecord::Base
   attr_accessible :content, :receiver_id,  :title
   belongs_to :sender , :class_name => "User" , :foreign_key => "sender_id"
   belongs_to :receiver , :class_name => "User" , :foreign_key => "receiver_id"
-  validates_presence_of :title, :content
+  validates_presence_of :title, :content 
 
 end

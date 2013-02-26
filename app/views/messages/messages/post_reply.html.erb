@@ -2,9 +2,10 @@
 
 		<%= f.hidden_field :receiver_id %>
 	<div class="note-content-container">
-		<%= f.text_field :title ,:size => "" , :style => "width:98.5%" ,:placeholder=>"Write a title"%>
+
+		<%= f.text_field :title ,:size => "" , :style => "width:98.5%" ,:placeholder=>"Write a title",required: true  %>
 		<p>
-			<%= f.text_area :content , :rows=> "" , :style => "width:98.5%; height:250px;" ,:placeholder=>"Write a note.."%>
+			<%= f.text_area :content , :rows=> "" , :style => "width:98.5%; height:250px;" ,:placeholder=>"Write a note.." , required: true %>
 		</p>
 	</div>
 
