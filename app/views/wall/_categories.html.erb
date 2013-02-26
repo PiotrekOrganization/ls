@@ -2,7 +2,11 @@
 		<li <% if current_page?(root_path) %>class="active"<% end %>><a href="<%= url_for root_path %>">Nearby</a></li>
 	<% for category in current_user.subscriptions %>
 		<% if !category.place.nil? %>
-			<li <% if current_page?(place_wall_path(category.place.slug)) %>class="active"<% end %>><%= link_to category.name, place_wall_path(category.place.slug) %></li>
+			<li <% if current_page?(place_wall_path(category.place.slug)) %>class="active"<% end %>>
+				<a href="<%= url_for place_wall_path(category.place.slug) %>">
+					<%= category.name %> 
+				</a>
+			</li>
 		<% end %>
 	<% end %>
 	<% if !current_page?( new_subscription_path ) %>
