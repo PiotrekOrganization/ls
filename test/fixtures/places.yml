@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  private_view: false
+  private_write: false
+
+two:
+  name: MyString
+  private_view: false
+  private_write: false

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225024319) do
+ActiveRecord::Schema.define(:version => 20130226013029) do
 
   create_table "categories", :force => true do |t|
     t.float    "lat"
@@ -55,6 +55,24 @@ ActiveRecord::Schema.define(:version => 20130225024319) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "address"
+  end
+
+  create_table "places", :force => true do |t|
+    t.string   "name"
+    t.boolean  "private_view"
+    t.boolean  "private_write"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "place_id"
+    t.float    "lat"
+    t.float    "lng"
+    t.float    "round"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "name"
   end
 
   create_table "users", :force => true do |t|
