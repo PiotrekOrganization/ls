@@ -1,0 +1,33 @@
+<h3>Create new place</h3>
+<div class="pull-left">
+	<%= form_for @place do |f| %>
+		<input type="hidden" value="<%= current_user.latitude %>" name="place[lat]" />
+		<input type="hidden" value="<%= current_user.longitude %>" name="place[lng]" />
+		<p>
+			<%= f.text_field :name, {:placeholder => "Place name"} %>
+		</p>
+		<p>
+			<label>
+				<%= f.check_box :private_write %>
+				<span>Only me and invited people <br />can write posts and comments</span>
+			</label>
+		</p>
+		<p>
+			<label>
+				<%= f.check_box :private_view %>
+				<span>Only me and invited people <br />can see this place</span>
+			</label>
+		</p>	
+		<p>
+			<%= f.submit "Save & subscribe", {:class => 'btn btn-primary'} %>
+		</p>
+	<% end %>
+</div>
+<div class="pull-right">
+	<div id="select-place-location-map" style="width: 400px; height:300px;"></div>
+</div>
+<div class="clearfix"></div>
+
+<table class="table">
+
+</table>

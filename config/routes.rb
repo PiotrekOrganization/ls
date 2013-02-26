@@ -4,6 +4,8 @@ LocalS::Application.routes.draw do
   
   root :to => "wall#index"
   resources :notes
+  resources :places
+  resources :subscriptions
 
   match "api/save_location" => "users#save_location", :as => "api_save_location"
 
