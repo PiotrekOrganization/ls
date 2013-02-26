@@ -9,4 +9,14 @@ class WallController < ApplicationController
 		end
 	end
 
+	def place
+		@place = Place.where( :slug => params[:slug] ).first
+		@notes = Note.where( :place_id => @place.id )
+		if user_signed_in?
+			@new_note = Note.new
+			@new_note_form_url = new_place_note_path(@place)
+			@new_note.place = @place
+		end
+	end
+
 end

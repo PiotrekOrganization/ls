@@ -25,4 +25,11 @@ class PlacesController < ApplicationController
 		redirect_to root_path
 	end
 
+	def new_note
+		@note = Note.new(params[:note])
+		@note.user = current_user
+		@note.save
+		redirect_to place_wall_path(@note.place.slug) , :alert => "note created"
+	end
+
 end

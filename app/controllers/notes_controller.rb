@@ -7,6 +7,8 @@ class NotesController < ApplicationController
 	end
 
 	def create 
+		# this is a global wall note creator
+		# for place note see places controller
 		@note = Note.new(params[:note])
 		@note.user = current_user
 		if @note.latitude.nil? or @note.longitude.nil?
