@@ -1,18 +1,22 @@
 
   
 
-  	<%= form_for [:messages , @message ] do |f| %>
-	<%= f.hidden_field :receiver_id %>
+  	<%= form_for [:messages , @message ] , :style => "width:98.5%" do |f| %>
+
+		<%= f.hidden_field :receiver_id %>
 	<div class="note-content-container">
-		<input id="message_title" name="message[title]" placeholder="Write a title" type="text" style="width:98.5%">
-		<textarea  id="message_content" name="message[content]" placeholder="Write a note.." style="width:98.5%;height:250px;"><%= @message.content %></textarea>
+		<%= f.text_field :title ,:size => "" , :style => "width:98.5%" ,:placeholder=>"Write a title"%>
+		<p>
+			<%= f.text_area :content , :rows=> "" , :style => "width:98.5%; height:250px;" ,:placeholder=>"Write a note.."%>
+		</p>
 	</div>
 
-		<div class="note-details-container">
-			<div class="note-submit">
-			<input class="btn btn-success nav pull-right" name="commit" type="submit" value="Send">
+	<div class="note-details-container">
+			<div class="note-submit nav pull-right">
+				<%= f.submit  "Send" , :class=>"btn btn-success"%>
 			</div>
-		</div>
+	</div>
+	
 	<% end %>
 	<div class="clearfix"></div>
   
