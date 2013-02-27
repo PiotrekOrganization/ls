@@ -34,4 +34,4 @@ class Gui
 				newPostLocationNameField.html('')
 		)
 
-$ -> new Gui
+#$ -> new Gui

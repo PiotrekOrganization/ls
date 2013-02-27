@@ -1,6 +1,6 @@
 jQuery ->
   $("a[rel=popover]").popover()
-  $(".tooltip").tooltip()
+  $(".button-tooltip").tooltip()
   $("a[rel=tooltip]").tooltip()
 
  $.extend $.fn,

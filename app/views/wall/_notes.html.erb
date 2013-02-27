@@ -59,7 +59,9 @@
 				<div class="textarea-container">
 					<textarea class="comment-content" name="comment[content]"></textarea>
 				</div>
+
 				<%= f.submit "Post", { :class => 'btn btn-small btn-primary pull-right' } %>
+				<a href="#" class="button-tooltip btn btn-small pull-right disabled post-submit-enter-mode" title="Enter submits post"><i class="icon-pencil"></i></a>
 				<div class="clearfix"></div>
 			<% end %>
 			<% else %>

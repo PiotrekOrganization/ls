@@ -1,13 +1,15 @@
 <ul id="categories-menu">
 		<li <% if current_page?(root_path) %>class="active"<% end %>><a href="<%= url_for root_path %>">Nearby</a></li>
+	<% if user_signed_in? %>
 	<% for category in current_user.subscriptions %>
 		<% if !category.place.nil? %>
 			<li <% if current_page?(place_wall_path(category.place.slug)) %>class="active"<% end %>>
 				<a href="<%= url_for place_wall_path(category.place.slug) %>">
-					<%= category.name %> 
+					<span class="label label-warning">2</span> <%= category.name %> 
 				</a>
 			</li>
 		<% end %>
+	<% end %>
 	<% end %>
 	<% if !current_page?( new_subscription_path ) %>
 		<li class="new-category"><a href="<%= url_for new_subscription_path %>"><i class="icon-plus"></i> Add category</a></li>

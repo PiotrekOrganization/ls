@@ -58,10 +58,18 @@ body {
 	background: -ms-linear-gradient(top,  rgba(198,198,198,1) 0%,rgba(232,232,232,0.91) 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  rgba(198,198,198,1) 0%,rgba(232,232,232,0.91) 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c6c6c6', endColorstr='#e8e8e8e8',GradientType=0 ); /* IE6-9 */
+	position: relative;
 }
 
 #categories-menu li {
 	list-style:none;
+}
+
+#categories-menu li a .label {
+	padding: 3px 7px;
+	position: absolute;
+	left: 10px;
+	top: 10px;
 }
 
 #categories-menu li.new-category a {
@@ -129,6 +137,10 @@ body {
 #new-post-form .note-details-container .note-user-location {
 	float: right;
 	line-height: 30px;
+}
+
+.post-submit-enter-mode {
+	margin-right: 5px;
 }
 
 #new-post-form .note-details-container .note-submit {
