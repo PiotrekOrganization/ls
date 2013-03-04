@@ -21,4 +21,9 @@ class NotesController < ApplicationController
 		redirect_to root_path , :alert => "note created"
 	end
 
+	def get_local_notes
+		@notes = Note.all
+		render :json => @notes
+	end
+
 end

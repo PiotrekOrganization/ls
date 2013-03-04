@@ -1,5 +1,7 @@
 class WallController < ApplicationController
 
+	layout 'map', :only => "index"
+
 	def index
 		@notes = Note.all(:order => 'created_at DESC', :limit => 10)
 		if user_signed_in?

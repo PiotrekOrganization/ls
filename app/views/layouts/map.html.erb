@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LocalSpotted</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "localmap" %>
+  <%= csrf_meta_tags %>
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+</head>
+<body>
+<div id="modal-window-space"></div>
+  <%= render :partial => '/layouts/header' %>
+  <%= render :partial => '/layouts/map' %>
+<div class="row-fluid">
+  <div class="span3">
+    <%= render :partial => '/wall/categories' %>
+  </div>
+  <div class="span7" id="wall-container">
+    <div id="wall">
+      <% unless notice.nil? %><p class="notice"><%= notice %></p><% end %>
+      <% unless notice.nil? %><p class="alert"><%= alert %></p><% end %>
+      <%= yield %>
+    </div>
+</div>
+  <div class="span2">&nbsp;</div>
+  <div class="clearfix"></div>
+</div>
+
+<script>
+	function getLocation()
+  	{
+  		console.log('f:getLocation')
+  		if (navigator.geolocation)
+    	{
+    		navigator.geolocation.getCurrentPosition(savePosition)
+    	}
+  	}
+	function savePosition(position)
+  	{
+  		$.ajax({
+  			url: "<%= url_for api_save_location_path %>",
+  			data: {lat: position.coords.latitude, long: position.coords.longitude }
+		}).done(function ( data ) {
+  			console.log( data )
+		})
+  	}
+  	$(document).ready( function() {
+  		getLocation()
+  	})
+</script>
+</body>
+</html>

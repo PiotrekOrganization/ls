@@ -1,14 +1,23 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  #before_filter :get_location
   before_filter :current_guest
+  before_filter :current_location
 
   #def get_location
   #	@current_location = request.location
   #end
 
 
+  def current_location
+    if user_signed_in?
+      @lat = current_user.latitude
+      @lng = current_user.longitude
+    else
+      @lat = @current_guest.latitude
+      @lng = @current_guest.longitude
+    end
+  end
 
   def current_guest
 

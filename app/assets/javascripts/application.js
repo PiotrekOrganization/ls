@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require modalwindow
 //= require twitter/bootstrap
 //= require handlebars
 //= require_tree ./templates
-//= require_tree .
+//= require wall

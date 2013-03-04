@@ -10,6 +10,7 @@ LocalS::Application.routes.draw do
   resources :subscriptions
 
   match "api/save_location" => "users#save_location", :as => "api_save_location"
+  match "api/get_local_notes" => "notes#get_local_notes", :as => "api_get_local_notes"
 
   namespace :messages do  
     match 'post_reply/:id' => "messages#post_reply", :as => 'post_reply'
